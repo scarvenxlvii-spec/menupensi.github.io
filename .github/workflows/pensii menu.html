@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentas Seni 2025 - Timun Mas vs Buto Ijo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Berkshire+Swash&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a3200;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='0.1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='0.1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23126d00' fill-opacity='0.2'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.2'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .menu-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 217, 0, 0.3);
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 217, 0, 0.2);
+        }
+        .tab-active {
+            background-color: #FFD700;
+            color: #0a3200;
+        }
+        .menu-icon {
+            font-size: 1.8rem;
+            margin-right: 0.5rem;
+        }
+        .combined-emoji {
+            display: inline-flex;
+            align-items: center;
+        }
+        .order-btn {
+            transition: all 0.3s ease;
+        }
+        .order-btn:hover {
+            transform: scale(1.05);
+        }
+        .order-item {
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .order-summary {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .fancy-title {
+            font-family: 'Berkshire Swash', cursive;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .bamboo-border {
+            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='none' stroke='%23FFD700' stroke-width='4' stroke-dasharray='10 5'/%3E%3C/svg%3E") 1 repeat;
+            border-width: 4px;
+            border-style: solid;
+        }
+        .bamboo-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M0 20 L40 20' stroke='%23FFD700' stroke-width='1' stroke-opacity='0.3'/%3E%3Cpath d='M20 0 L20 40' stroke='%23FFD700' stroke-width='1' stroke-opacity='0.3'/%3E%3C/svg%3E");
+        }
+        .qr-code {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .qr-code-pattern {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(21, 1fr);
+            grid-template-rows: repeat(21, 1fr);
+            gap: 0;
+        }
+        .qr-cell {
+            background-color: transparent;
+        }
+        .qr-cell.black {
+            background-color: black;
+        }
+        .qr-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 5px solid black;
+        }
+        .qr-corner-tl {
+            top: 15px;
+            left: 15px;
+            border-right: none;
+            border-bottom: none;
+        }
+        .qr-corner-tr {
+            top: 15px;
+            right: 15px;
+            border-left: none;
+            border-bottom: none;
+        }
+        .qr-corner-bl {
+            bottom: 15px;
+            left: 15px;
+            border-right: none;
+            border-top: none;
+        }
+        .kitchen-display {
+            height: 300px;
+            overflow-y: auto;
+            background-color: #072600;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .kitchen-order {
+            background-color: #0c4400;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #FFD700;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .slide-in {
+            animation: slideIn 0.5s ease forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            background-color: #0c4400;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        .device-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .device-status.online {
+            background-color: #4CAF50;
+        }
+        .device-status.offline {
+            background-color: #F44336;
+        }
+        .device-status.connecting {
+            background-color: #FFC107;
+            animation: pulse 1s infinite;
+        }
+        .custom-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <div class="text-center mb-8 bg-[#0c4400] p-6 rounded-lg shadow-lg bamboo-border">
+            <div class="flex justify-center mb-2">
+                <svg class="w-16 h-16 mr-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#FFD700" />
+                    <path d="M30,30 Q50,10 70,30 T70,70 Q50,90 30,70 T30,30" fill="#0a3200" />
+                </svg>
+                <h1 class="text-4xl font-bold text-[#FFD700] mb-2 fancy-title">Pentas Seni 2025</h1>
+                <svg class="w-16 h-16 ml-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="20" width="60" height="60" fill="#0a3200" />
+                    <circle cx="50" cy="50" r="25" fill="#FFD700" />
+                    <path d="M40,40 L60,40 L60,60 L40,60 Z" fill="#0a3200" />
+                </svg>
+            </div>
+            <h2 class="text-2xl text-[#FFD700] fancy-title">Timun Mas vs Buto Ijo</h2>
+            <p class="text-[#9ACD32] mt-2">Traditional & Modern Delights from the Folktale</p>
+            
+            <!-- Connection Status -->
+            <div class="mt-4 flex justify-center items-center">
+                <div id="connection-status" class="device-status offline"></div>
+                <span id="connection-text" class="text-[#9ACD32] text-sm">Not Connected</span>
+                <button id="connect-btn" class="ml-4 bg-[#FFD700] text-[#0a3200] px-3 py-1 rounded-lg text-sm font-bold hover:bg-[#FFC000]">Connect</button>
+            </div>
+        </div>
+
+        <!-- Main Content Tabs -->
+        <div class="flex justify-center mb-6">
+            <button id="order-tab" class="tab-active px-6 py-3 rounded-l-lg font-medium text-lg focus:outline-none">
+                Order Menu
+            </button>
+            <button id="kitchen-tab" class="bg-[#0c4400] text-[#9ACD32] px-6 py-3 rounded-r-lg font-medium text-lg focus:outline-none border border-[#FFD700]">
+                Kitchen Display
+            </button>
+        </div>
+
+        <!-- Order Menu Section -->
+        <div id="order-section">
+            <!-- Customer Info Section -->
+            <div class="bg-[#0c4400] rounded-lg p-6 shadow-lg mb-6 bamboo-pattern">
+                <h2 class="text-2xl font-bold mb-4 text-[#FFD700] flex items-center fancy-title">
+                    <span class="menu-icon">📝</span> Customer Details
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="customer-name" class="block text-[#9ACD32] mb-2">Customer Name</label>
+                        <input type="text" id="customer-name" class="w-full px-4 py-2 rounded-lg border border-[#FFD700] bg-[#072600] text-[#FFD700] focus:outline-none focus:ring-2 focus:ring-[#FFD700]" placeholder="Enter your name">
+                    </div>
+                    <div>
+                        <label for="table-number" class="block text-[#9ACD32] mb-2">Table Number</label>
+                        <input type="number" id="table-number" class="w-full px-4 py-2 rounded-lg border border-[#FFD700] bg-[#072600] text-[#FFD700] focus:outline-none focus:ring-2 focus:ring-[#FFD700]" placeholder="Enter your table number">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Tabs -->
+            <div class="flex justify-center mb-6">
+                <button id="traditional-tab" class="tab-active px-6 py-3 rounded-l-lg font-medium text-lg focus:outline-none">
+                    Traditional Menu
+                </button>
+                <button id="modern-tab" class="bg-[#0c4400] text-[#9ACD32] px-6 py-3 rounded-r-lg font-medium text-lg focus:outline-none border border-[#FFD700]">
+                    Modern Menu
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <!-- Traditional Menu -->
+                    <div id="traditional-menu" class="menu-section">
+                        <div class="bg-[#0c4400] rounded-lg p-6 shadow-lg mb-6 bamboo-pattern">
+                            <h2 class="text-2xl font-bold mb-6 text-[#FFD700] flex items-center fancy-title">
+                                <span class="menu-icon">🍲</span> Timun Mas' Traditional Food
+                            </h2>
+                            <div class="grid grid-cols-1 gap-6">
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">🍜</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Soto Ayam</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Traditional chicken soup with turmeric broth, vermicelli noodles, and aromatic herbs.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Soto Ayam', '🍜')">Add to Order</button>
+                                </div>
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">🍢</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Sate Ayam</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Grilled chicken skewers served with our special peanut sauce and rice cakes.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Sate Ayam', '🍢')">Add to Order</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0c4400] rounded-lg p-6 shadow-lg bamboo-pattern">
+                            <h2 class="text-2xl font-bold mb-6 text-[#FFD700] flex items-center fancy-title">
+                                <span class="menu-icon">🥤</span> Timun Mas' Traditional Drinks
+                            </h2>
+                            <div class="grid grid-cols-1 gap-6">
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <div class="text-3xl mr-3 custom-icon">
+                                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10,8 L26,8 L24,30 L12,30 Z" fill="#FFC3A0" stroke="#8B4513" stroke-width="1"/>
+                                                <path d="M12,12 L24,12 L23,26 L13,26 Z" fill="#FF7F50" stroke="#8B4513" stroke-width="0.5"/>
+                                                <path d="M14,16 L22,16 L21,22 L15,22 Z" fill="#FFFF00" stroke="#8B4513" stroke-width="0.5"/>
+                                                <path d="M16,6 L20,6 L20,8 L16,8 Z" fill="#8B4513"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Es Selendang Mayang</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Traditional sweet dessert drink with colorful layers of coconut jelly and palm sugar syrup.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Es Selendang Mayang', '🧋')">Add to Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modern Menu (Hidden by default) -->
+                    <div id="modern-menu" class="menu-section hidden">
+                        <div class="bg-[#0c4400] rounded-lg p-6 shadow-lg mb-6 bamboo-pattern">
+                            <h2 class="text-2xl font-bold mb-6 text-[#FFD700] flex items-center fancy-title">
+                                <span class="menu-icon">🍔</span> Buto Ijo's Modern Food
+                            </h2>
+                            <div class="grid grid-cols-1 gap-6">
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">🍟</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Kentang Goreng</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Crispy golden french fries served with ketchup and mayonnaise.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Kentang Goreng', '🍟')">Add to Order</button>
+                                </div>
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">🍞</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Roti Bakar</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Toasted bread with various toppings like chocolate, cheese, or banana.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Roti Bakar', '🍞')">Add to Order</button>
+                                </div>
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">🍜</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Mie Goreng</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Stir-fried noodles with vegetables, egg, and choice of protein.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Mie Goreng', '🍜')">Add to Order</button>
+                                </div>
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">🍲</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Mie Kuah</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Noodle soup with flavorful broth, vegetables, and choice of protein.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Mie Kuah', '🍲')">Add to Order</button>
+                                </div>
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">🥟</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Dimsum</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Assorted steamed dumplings filled with various ingredients.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Dimsum', '🥟')">Add to Order</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0c4400] rounded-lg p-6 shadow-lg bamboo-pattern">
+                            <h2 class="text-2xl font-bold mb-6 text-[#FFD700] flex items-center fancy-title">
+                                <span class="menu-icon">🥤</span> Buto Ijo's Modern Drinks
+                            </h2>
+                            <div class="grid grid-cols-1 gap-6">
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <div class="text-3xl mr-3 custom-icon">
+                                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12,8 L24,8 L22,30 L14,30 Z" fill="#8B4513" stroke="#8B4513" stroke-width="1"/>
+                                                <path d="M14,10 L22,10 L21,28 L15,28 Z" fill="#C19A6B" stroke="#8B4513" stroke-width="0.5"/>
+                                                <path d="M10,6 L26,6 L26,8 L10,8 Z" fill="#8B4513"/>
+                                                <path d="M14,4 L22,4 L22,6 L14,6 Z" fill="#8B4513"/>
+                                                <rect x="10" y="30" width="16" height="2" fill="#8B4513"/>
+                                                <path d="M14,10 L22,10 L21.5,15 L14.5,15 Z" fill="#FFFFFF" fill-opacity="0.3"/>
+                                                <path d="M12,8 L14,8 L14,30 L12,30 Z" fill="#6F4E37"/>
+                                                <rect x="16" y="12" width="4" height="8" rx="2" fill="#87CEFA"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Es Teh</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Refreshing iced tea with optional lemon or milk.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Es Teh', '🧊🍵')">Add to Order</button>
+                                </div>
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">🥛</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Es Capucino Cincau</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Iced cappuccino with grass jelly for a unique texture.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Es Capucino Cincau', '🥛')">Add to Order</button>
+                                </div>
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">☕</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Kopi Hitam</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Strong black coffee brewed from premium local beans.</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Kopi Hitam', '☕')">Add to Order</button>
+                                </div>
+                                <div class="menu-card bg-[#072600] p-4 rounded-lg shadow">
+                                    <div class="flex items-center mb-2">
+                                        <span class="text-3xl mr-3">🍹</span>
+                                        <h3 class="text-xl font-semibold text-[#FFD700]">Es Random</h3>
+                                    </div>
+                                    <p class="text-[#9ACD32] mb-4">Mystery drink with a surprise mix of flavors - different every time!</p>
+                                    <button class="order-btn bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg hover:bg-[#FFC000] transition-colors font-bold" onclick="addToOrder('Es Random', '🍹')">Add to Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="lg:col-span-1">
+                    <div class="bg-[#0c4400] rounded-lg p-6 shadow-lg sticky top-6 bamboo-pattern">
+                        <h2 class="text-2xl font-bold mb-4 text-[#FFD700] flex items-center fancy-title">
+                            <span class="menu-icon">🛒</span> Your Order
+                        </h2>
+                        <div id="order-items" class="order-summary mb-4">
+                            <p id="empty-order" class="text-[#9ACD32] text-center py-6">Your order is empty. Add some items!</p>
+                        </div>
+                        <div class="border-t border-[#FFD700] border-opacity-30 pt-4 mt-2">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-semibold text-[#9ACD32]">Total Items:</span>
+                                <span id="total-items" class="font-bold text-[#FFD700]">0</span>
+                            </div>
+                            <button id="submit-order" class="w-full bg-[#FFD700] text-[#0a3200] py-3 rounded-lg font-bold hover:bg-[#FFC000] transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                Submit Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kitchen Display Section (Hidden by default) -->
+        <div id="kitchen-section" class="hidden">
+            <div class="bg-[#0c4400] rounded-lg p-6 shadow-lg mb-6 bamboo-pattern">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-[#FFD700] flex items-center fancy-title">
+                        <span class="menu-icon">👨‍🍳</span> Kitchen Display System
+                    </h2>
+                    <div class="flex items-center">
+                        <div id="kitchen-status" class="device-status offline"></div>
+                        <span id="kitchen-status-text" class="text-[#9ACD32] text-sm mr-4">Not Connected</span>
+                        <button id="refresh-kitchen" class="bg-[#FFD700] text-[#0a3200] px-3 py-1 rounded-lg text-sm font-bold hover:bg-[#FFC000]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="kitchen-display" class="kitchen-display">
+                    <div class="text-center py-10 text-[#9ACD32]">
+                        <p>No orders to display.</p>
+                        <p class="text-sm mt-2">Orders will appear here when submitted.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#0c4400] rounded-lg p-6 shadow-lg mb-6 bamboo-pattern">
+                <h2 class="text-2xl font-bold mb-4 text-[#FFD700] flex items-center fancy-title">
+                    <span class="menu-icon">📱</span> Connected Devices
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-[#9ACD32]">
+                        <thead>
+                            <tr class="border-b border-[#FFD700] border-opacity-30">
+                                <th class="py-2 text-left">Device</th>
+                                <th class="py-2 text-left">Status</th>
+                                <th class="py-2 text-left">Last Active</th>
+                                <th class="py-2 text-left">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="device-list">
+                            <tr class="border-b border-[#FFD700] border-opacity-10">
+                                <td class="py-3">Kitchen Display</td>
+                                <td class="py-3">
+                                    <div class="flex items-center">
+                                        <div class="device-status offline mr-2"></div>
+                                        <span>Offline</span>
+                                    </div>
+                                </td>
+                                <td class="py-3">Never</td>
+                                <td class="py-3">
+                                    <button class="bg-[#FFD700] text-[#0a3200] px-3 py-1 rounded-lg text-sm font-bold hover:bg-[#FFC000]">Connect</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-3">Cashier Terminal</td>
+                                <td class="py-3">
+                                    <div class="flex items-center">
+                                        <div class="device-status offline mr-2"></div>
+                                        <span>Offline</span>
+                                    </div>
+                                </td>
+                                <td class="py-3">Never</td>
+                                <td class="py-3">
+                                    <button class="bg-[#FFD700] text-[#0a3200] px-3 py-1 rounded-lg text-sm font-bold hover:bg-[#FFC000]">Connect</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-[#0c4400] rounded-lg p-6 shadow-lg bamboo-pattern">
+                <h2 class="text-2xl font-bold mb-4 text-[#FFD700] flex items-center fancy-title">
+                    <span class="menu-icon">🔄</span> Connect New Device
+                </h2>
+                <p class="text-[#9ACD32] mb-4">Scan this QR code with another device to connect to this system:</p>
+                <div class="qr-code">
+                    <div class="qr-code-pattern" id="qr-pattern"></div>
+                    <div class="qr-corner qr-corner-tl"></div>
+                    <div class="qr-corner qr-corner-tr"></div>
+                    <div class="qr-corner qr-corner-bl"></div>
+                </div>
+                <p class="text-center text-[#9ACD32] mt-4">Device ID: PS2025-TM-BJ-001</p>
+            </div>
+        </div>
+        
+        <!-- Folktale Characters -->
+        <div class="mt-8 flex justify-between items-end">
+            <div class="w-24 h-24 relative">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Timun Mas -->
+                    <circle cx="50" cy="40" r="25" fill="#FFD700" />
+                    <path d="M30,65 Q50,85 70,65" stroke="#FFD700" stroke-width="3" fill="none" />
+                    <circle cx="40" cy="35" r="5" fill="#0a3200" />
+                    <circle cx="60" cy="35" r="5" fill="#0a3200" />
+                </svg>
+                <p class="text-[#FFD700] text-center text-xs mt-1 fancy-title">Timun Mas</p>
+            </div>
+            <div class="w-24 h-24 relative">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Buto Ijo -->
+                    <rect x="25" y="25" width="50" height="50" fill="#0c4400" />
+                    <circle cx="40" cy="40" r="5" fill="#FFD700" />
+                    <circle cx="60" cy="40" r="5" fill="#FFD700" />
+                    <path d="M35,60 Q50,50 65,60" stroke="#FFD700" stroke-width="3" fill="none" />
+                </svg>
+                <p class="text-[#FFD700] text-center text-xs mt-1 fancy-title">Buto Ijo</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Connection Modal -->
+    <div id="connection-modal" class="modal">
+        <div class="modal-content bamboo-pattern">
+            <h2 class="text-2xl font-bold mb-4 text-[#FFD700] flex items-center fancy-title">
+                <span class="menu-icon">🔌</span> Connect to Device
+            </h2>
+            <p class="text-[#9ACD32] mb-4">Enter the device ID you want to connect to:</p>
+            <input type="text" id="device-id-input" class="w-full px-4 py-2 rounded-lg border border-[#FFD700] bg-[#072600] text-[#FFD700] focus:outline-none focus:ring-2 focus:ring-[#FFD700] mb-4" placeholder="Enter device ID (e.g., PS2025-TM-BJ-002)">
+            <div class="flex justify-end">
+                <button id="cancel-connect" class="bg-[#072600] text-[#9ACD32] px-4 py-2 rounded-lg mr-2 hover:bg-[#0a3200] border border-[#FFD700]">Cancel</button>
+                <button id="confirm-connect" class="bg-[#FFD700] text-[#0a3200] px-4 py-2 rounded-lg font-bold hover:bg-[#FFC000]">Connect</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Main navigation tabs
+        const orderTab = document.getElementById('order-tab');
+        const kitchenTab = document.getElementById('kitchen-tab');
+        const orderSection = document.getElementById('order-section');
+        const kitchenSection = document.getElementById('kitchen-section');
+
+        // Menu tabs
+        const traditionalTab = document.getElementById('traditional-tab');
+        const modernTab = document.getElementById('modern-tab');
+        const traditionalMenu = document.getElementById('traditional-menu');
+        const modernMenu = document.getElementById('modern-menu');
+
+        // Order elements
+        const orderItems = document.getElementById('order-items');
+        const emptyOrder = document.getElementById('empty-order');
+        const totalItemsElement = document.getElementById('total-items');
+        const submitOrderBtn = document.getElementById('submit-order');
+        const customerNameInput = document.getElementById('customer-name');
+        const tableNumberInput = document.getElementById('table-number');
+        
+        // Connection elements
+        const connectBtn = document.getElementById('connect-btn');
+        const connectionStatus = document.getElementById('connection-status');
+        const connectionText = document.getElementById('connection-text');
+        const connectionModal = document.getElementById('connection-modal');
+        const cancelConnectBtn = document.getElementById('cancel-connect');
+        const confirmConnectBtn = document.getElementById('confirm-connect');
+        const deviceIdInput = document.getElementById('device-id-input');
+        const kitchenStatus = document.getElementById('kitchen-status');
+        const kitchenStatusText = document.getElementById('kitchen-status-text');
+        const refreshKitchenBtn = document.getElementById('refresh-kitchen');
+        const kitchenDisplay = document.getElementById('kitchen-display');
+        
+        let orderList = [];
+        let totalItems = 0;
+        let isConnected = false;
+        let kitchenOrders = [];
+
+        // Generate QR code pattern
+        function generateQRCode() {
+            const qrPattern = document.getElementById('qr-pattern');
+            const size = 21;
+            
+            // Clear existing pattern
+            qrPattern.innerHTML = '';
+            
+            // Create a random pattern that looks like a QR code
+            for (let i = 0; i < size * size; i++) {
+                const cell = document.createElement('div');
+                cell.className = Math.random() > 0.7 ? 'qr-cell black' : 'qr-cell';
+                qrPattern.appendChild(cell);
+            }
+        }
+        
+        // Initialize QR code
+        generateQRCode();
+
+        // Main tab navigation
+        orderTab.addEventListener('click', function() {
+            orderSection.classList.remove('hidden');
+            kitchenSection.classList.add('hidden');
+            orderTab.classList.add('tab-active');
+            orderTab.classList.remove('bg-[#0c4400]', 'text-[#9ACD32]', 'border', 'border-[#FFD700]');
+            kitchenTab.classList.remove('tab-active');
+            kitchenTab.classList.add('bg-[#0c4400]', 'text-[#9ACD32]', 'border', 'border-[#FFD700]');
+        });
+
+        kitchenTab.addEventListener('click', function() {
+            orderSection.classList.add('hidden');
+            kitchenSection.classList.remove('hidden');
+            kitchenTab.classList.add('tab-active');
+            kitchenTab.classList.remove('bg-[#0c4400]', 'text-[#9ACD32]', 'border', 'border-[#FFD700]');
+            orderTab.classList.remove('tab-active');
+            orderTab.classList.add('bg-[#0c4400]', 'text-[#9ACD32]', 'border', 'border-[#FFD700]');
+        });
+
+        // Menu tab navigation
+        traditionalTab.addEventListener('click', function() {
+            traditionalMenu.classList.remove('hidden');
+            modernMenu.classList.add('hidden');
+            traditionalTab.classList.add('tab-active');
+            traditionalTab.classList.remove('bg-[#0c4400]', 'text-[#9ACD32]', 'border', 'border-[#FFD700]');
+            modernTab.classList.remove('tab-active');
+            modernTab.classList.add('bg-[#0c4400]', 'text-[#9ACD32]', 'border', 'border-[#FFD700]');
+        });
+
+        modernTab.addEventListener('click', function() {
+            traditionalMenu.classList.add('hidden');
+            modernMenu.classList.remove('hidden');
+            modernTab.classList.add('tab-active');
+            modernTab.classList.remove('bg-[#0c4400]', 'text-[#9ACD32]', 'border', 'border-[#FFD700]');
+            traditionalTab.classList.remove('tab-active');
+            traditionalTab.classList.add('bg-[#0c4400]', 'text-[#9ACD32]', 'border', 'border-[#FFD700]');
+        });
+
+        // Connection modal
+        connectBtn.addEventListener('click', function() {
+            connectionModal.classList.add('active');
+        });
+
+        cancelConnectBtn.addEventListener('click', function() {
+            connectionModal.classList.remove('active');
+        });
+
+        confirmConnectBtn.addEventListener('click', function() {
+            const deviceId = deviceIdInput.value.trim();
+            if (deviceId) {
+                simulateConnection();
+                connectionModal.classList.remove('active');
+            }
+        });
+
+        // Simulate connection process
+        function simulateConnection() {
+            // Change status to connecting
+            connectionStatus.classList.remove('offline');
+            connectionStatus.classList.add('connecting');
+            connectionText.textContent = 'Connecting...';
+            
+            // Simulate connection delay
+            setTimeout(() => {
+                isConnected = true;
+                connectionStatus.classList.remove('connecting');
+                connectionStatus.classList.add('online');
+                connectionText.textContent = 'Connected';
+                
+                // Update kitchen status
+                kitchenStatus.classList.remove('offline');
+                kitchenStatus.classList.add('online');
+                kitchenStatusText.textContent = 'Connected';
+                
+                // Update device list
+                updateDeviceList();
+            }, 2000);
+        }
+
+        // Update device list in kitchen section
+        function updateDeviceList() {
+            const deviceList = document.getElementById('device-list');
+            deviceList.innerHTML = `
+                <tr class="border-b border-[#FFD700] border-opacity-10">
+                    <td class="py-3">Kitchen Display</td>
+                    <td class="py-3">
+                        <div class="flex items-center">
+                            <div class="device-status online mr-2"></div>
+                            <span>Online</span>
+                        </div>
+                    </td>
+                    <td class="py-3">${new Date().toLocaleTimeString()}</td>
+                    <td class="py-3">
+                        <button class="bg-[#072600] text-[#9ACD32] px-3 py-1 rounded-lg text-sm border border-[#FFD700]">Disconnect</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-3">Cashier Terminal</td>
+                    <td class="py-3">
+                        <div class="flex items-center">
+                            <div class="device-status online mr-2"></div>
+                            <span>Online</span>
+                        </div>
+                    </td>
+                    <td class="py-3">${new Date().toLocaleTimeString()}</td>
+                    <td class="py-3">
+                        <button class="bg-[#072600] text-[#9ACD32] px-3 py-1 rounded-lg text-sm border border-[#FFD700]">Disconnect</button>
+                    </td>
+                </tr>
+            `;
+        }
+
+        // Refresh kitchen display
+        refreshKitchenBtn.addEventListener('click', function() {
+            if (isConnected) {
+                updateKitchenDisplay();
+            }
+        });
+
+        // Update kitchen display with orders
+        function updateKitchenDisplay() {
+            if (kitchenOrders.length === 0) {
+                kitchenDisplay.innerHTML = `
+                    <div class="text-center py-10 text-[#9ACD32]">
+                        <p>No orders to display.</p>
+                        <p class="text-sm mt-2">Orders will appear here when submitted.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            kitchenDisplay.innerHTML = '';
+            kitchenOrders.forEach((order, index) => {
+                const orderElement = document.createElement('div');
+                orderElement.className = 'kitchen-order slide-in';
+                orderElement.style.animationDelay = `${index * 0.1}s`;
+                
+                let orderItems = '';
+                order.items.forEach(item => {
+                    orderItems += `
+                        <div class="flex justify-between items-center py-1">
+                            <div class="flex items-center">
+                                <span class="text-xl mr-2">${item.icon}</span>
+                                <span class="text-[#FFD700]">${item.name}</span>
+                            </div>
+                            <span class="text-[#9ACD32]">x${item.quantity}</span>
+                        </div>
+                    `;
+                });
+                
+                orderElement.innerHTML = `
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-lg font-bold text-[#FFD700]">Order #${order.id}</h3>
+                        <span class="text-[#9ACD32] text-sm">${order.time}</span>
+                    </div>
+                    <div class="mb-2">
+                        <p class="text-[#9ACD32]">Customer: <span class="text-[#FFD700]">${order.customer}</span></p>
+                        <p class="text-[#9ACD32]">Table: <span class="text-[#FFD700]">${order.table}</span></p>
+                    </div>
+                    <div class="border-t border-[#FFD700] border-opacity-20 pt-2">
+                        ${orderItems}
+                    </div>
+                    <div class="flex justify-end mt-3">
+                        <button class="bg-[#FFD700] text-[#0a3200] px-3 py-1 rounded-lg text-sm font-bold hover:bg-[#FFC000] mr-2" onclick="completeOrder(${index})">Complete</button>
+                        <button class="bg-[#072600] text-[#9ACD32] px-3 py-1 rounded-lg text-sm border border-[#FFD700]" onclick="cancelOrder(${index})">Cancel</button>
+                    </div>
+                `;
+                
+                kitchenDisplay.appendChild(orderElement);
+            });
+        }
+
+        // Complete order
+        function completeOrder(index) {
+            kitchenOrders.splice(index, 1);
+            updateKitchenDisplay();
+        }
+
+        // Cancel order
+        function cancelOrder(index) {
+            kitchenOrders.splice(index, 1);
+            updateKitchenDisplay();
+        }
+
+        function addToOrder(itemName, itemIcon) {
+            // Hide empty order message
+            if (orderList.length === 0) {
+                emptyOrder.classList.add('hidden');
+            }
+            
+            // Check if item already exists in order
+            const existingItemIndex = orderList.findIndex(item => item.name === itemName);
+            
+            if (existingItemIndex !== -1) {
+                // Increment quantity if item exists
+                orderList[existingItemIndex].quantity++;
+                const quantityElement = document.getElementById(`quantity-${existingItemIndex}`);
+                quantityElement.textContent = orderList[existingItemIndex].quantity;
+            } else {
+                // Add new item if it doesn't exist
+                const newItem = {
+                    name: itemName,
+                    icon: itemIcon,
+                    quantity: 1
+                };
+                
+                orderList.push(newItem);
+                const itemIndex = orderList.length - 1;
+                
+                // Create new order item element
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item flex justify-between items-center py-2 border-b border-[#FFD700] border-opacity-20';
+                orderItem.id = `order-item-${itemIndex}`;
+                
+                orderItem.innerHTML = `
+                    <div class="flex items-center">
+                        <span class="text-xl mr-2">${itemIcon}</span>
+                        <span class="text-[#FFD700]">${itemName}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="w-6 h-6 bg-[#072600] rounded-full text-[#FFD700] font-bold flex items-center justify-center mr-2 border border-[#FFD700]" onclick="decreaseQuantity(${itemIndex})">-</button>
+                        <span id="quantity-${itemIndex}" class="mx-1 text-[#FFD700]">${newItem.quantity}</span>
+                        <button class="w-6 h-6 bg-[#072600] rounded-full text-[#FFD700] font-bold flex items-center justify-center ml-2 border border-[#FFD700]" onclick="increaseQuantity(${itemIndex})">+</button>
+                        <button class="ml-4 text-[#9ACD32] hover:text-[#FFD700]" onclick="removeItem(${itemIndex})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                
+                orderItems.appendChild(orderItem);
+            }
+            
+            // Update total items
+            totalItems++;
+            totalItemsElement.textContent = totalItems;
+            
+            // Enable submit button if there are items and customer details
+            updateSubmitButtonState();
+        }
+
+        function increaseQuantity(index) {
+            orderList[index].quantity++;
+            document.getElementById(`quantity-${index}`).textContent = orderList[index].quantity;
+            totalItems++;
+            totalItemsElement.textContent = totalItems;
+        }
+
+        function decreaseQuantity(index) {
+            if (orderList[index].quantity > 1) {
+                orderList[index].quantity--;
+                document.getElementById(`quantity-${index}`).textContent = orderList[index].quantity;
+                totalItems--;
+                totalItemsElement.textContent = totalItems;
+            } else {
+                removeItem(index);
+            }
+        }
+
+        function removeItem(index) {
+            // Update total items
+            totalItems -= orderList[index].quantity;
+            totalItemsElement.textContent = totalItems;
+            
+            // Remove item from DOM
+            const itemElement = document.getElementById(`order-item-${index}`);
+            itemElement.classList.add('fadeOut');
+            itemElement.addEventListener('transitionend', function() {
+                itemElement.remove();
+            });
+            
+            // Remove item from array
+            orderList.splice(index, 1);
+            
+            // Reindex remaining items
+            for (let i = index; i < orderList.length; i++) {
+                const element = document.getElementById(`order-item-${i+1}`);
+                if (element) {
+                    element.id = `order-item-${i}`;
+                    const quantityElement = document.getElementById(`quantity-${i+1}`);
+                    if (quantityElement) {
+                        quantityElement.id = `quantity-${i}`;
+                    }
+                    
+                    // Update onclick handlers
+                    const buttons = element.querySelectorAll('button');
+                    buttons[0].setAttribute('onclick', `decreaseQuantity(${i})`);
+                    buttons[1].setAttribute('onclick', `increaseQuantity(${i})`);
+                    buttons[2].setAttribute('onclick', `removeItem(${i})`);
+                }
+            }
+            
+            // Show empty order message if no items left
+            if (orderList.length === 0) {
+                emptyOrder.classList.remove('hidden');
+            }
+            
+            // Update submit button state
+            updateSubmitButtonState();
+        }
+
+        function updateSubmitButtonState() {
+            const hasItems = orderList.length > 0;
+            const hasName = customerNameInput.value.trim() !== '';
+            const hasTable = tableNumberInput.value.trim() !== '';
+            
+            submitOrderBtn.disabled = !(hasItems && hasName && hasTable);
+        }
+
+        // Add event listeners for input fields
+        customerNameInput.addEventListener('input', updateSubmitButtonState);
+        tableNumberInput.addEventListener('input', updateSubmitButtonState);
+
+        // Submit order
+        submitOrderBtn.addEventListener('click', function() {
+            const customerName = customerNameInput.value;
+            const tableNumber = tableNumberInput.value;
+            
+            // Create order summary
+            let orderSummary = `Order for ${customerName} at Table ${tableNumber}:\n\n`;
+            orderList.forEach(item => {
+                orderSummary += `${item.icon} ${item.name} x${item.quantity}\n`;
+            });
+            
+            // Add to kitchen orders if connected
+            if (isConnected) {
+                const newOrder = {
+                    id: 1000 + kitchenOrders.length,
+                    customer: customerName,
+                    table: tableNumber,
+                    time: new Date().toLocaleTimeString(),
+                    items: [...orderList]
+                };
+                
+                kitchenOrders.push(newOrder);
+                
+                // Show confirmation with connection info
+                alert('Order submitted successfully and sent to kitchen!\n\n' + orderSummary);
+            } else {
+                // Show confirmation without connection info
+                alert('Order submitted successfully!\n\n' + orderSummary + '\n\nNote: Kitchen display not connected. Connect devices to enable real-time order sharing.');
+            }
+            
+            // Reset form
+            orderList = [];
+            totalItems = 0;
+            totalItemsElement.textContent = '0';
+            orderItems.innerHTML = '<p id="empty-order" class="text-[#9ACD32] text-center py-6">Your order is empty. Add some items!</p>';
+            emptyOrder.classList.remove('hidden');
+            customerNameInput.value = '';
+            tableNumberInput.value = '';
+            submitOrderBtn.disabled = true;
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'961b27564699b5ca',t:'MTc1MjkzNzkxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
